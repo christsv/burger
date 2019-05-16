@@ -1,0 +1,51 @@
+<div class="container">
+
+<!-- burger image -->
+    <div class="row">
+        <div class="col text-center" id="top-bar">
+            <!-- not /public/.. because its express.static (i.e read 13/12 ) -->
+            <img src="../assets/img/burger.png" alt="burger">
+            <h1> Burger App!</h1>
+        </div>
+    </div>
+
+<!-- rendered burgers name uneaten --> 
+
+            <!-- for each id go through this -->
+             <div class="row">
+                {{#each id}}
+                    <div class="col-md-6 text-center">
+                        {{#unless this.devoured}}
+                            {{this.id}} {{this.burger_name}}
+                                <button data-id={{this.id}} class="devour-button btn btn-primary">Devour!</button>
+                        {{/unless}}
+                    </div>
+
+                    <div class="col-md-6 text-center">
+                        {{#if this.devoured}}
+                            {{this.id}} {{this.burger_name}}
+                        {{/if}}
+                    </div>
+                {{/each}}
+            </div>  
+        
+
+<!-- rendered burgers name eaten -->
+
+
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col text-center">
+<!-- This POST burgers/create alone goes to the localhost/burgers/create dir but it cant GET it nor does anything happen -->
+            <form class="add-burger-form">
+                <!-- name = value, "[burger-name=user-input]" -->
+                <div class="form-group">
+                    <input type="text" class="form-control mb-3" name="burger_name" value="" id="burger-text">
+                </div>
+                <button type="submit" class="btn btn-primary" id="text-button">submit</button>
+            </form>
+        </div>
+    </div>
+</div>

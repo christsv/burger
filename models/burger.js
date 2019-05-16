@@ -1,14 +1,17 @@
 var orm = require("../config/orm.js");
 
 var burger = {
-    all: function(){
-        orm.selectAll();
+    all: function(cb){
+        orm.selectAll("burgers", function(res){
+            cb(res);
+        });
     },
-    insert: function(){
-        orm.insertOne();
+    // we need the name and the callback
+    insert: function(name, cb){
+        orm.insertOne("burgers", ["burger_name", "devoured"], [name, false], cb);
     },
-    update: function(){
-        orm.updateOne();
+    update: function(name, cb){
+        orm.updateOne("burgers", { devoured: true}, "id=" + name , cb);
     }
 }
 
