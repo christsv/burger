@@ -1,5 +1,5 @@
 require("dotenv").config();
-var keys = require("./keys"); // keys.keys => password
+var keys = require("../keys"); // keys.keys => password
 
 var mysql = require("mysql");
 
